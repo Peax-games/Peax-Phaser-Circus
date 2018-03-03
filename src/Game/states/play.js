@@ -61,8 +61,8 @@ export default function play(game) {
             lion.scale.y = 3;
 
 
-            lion.animations.add('runLion', window.Phaser.Animation.generateFrameNames('clown', 0, 2, '', 4), 3 /*fps */, true);
-            lion.animations.add('idleLion', window.Phaser.Animation.generateFrameNames('clown', 0, 0, '', 4), 1 /*fps */, true);
+            lion.animations.add('runLion', window.Phaser.Animation.generateFrameNames('lion', 0, 2, '', 4), 3 /*fps */, true);
+            lion.animations.add('idleLion', window.Phaser.Animation.generateFrameNames('lion', 0, 0, '', 4), 1 /*fps */, true);
 
 
             clown.isRunning = false;
@@ -252,7 +252,7 @@ export default function play(game) {
             }
 
             if (lion.body.x < (game.world.width - 1600)) {
-                this.game.physics.arcade.collide(this.recicleFireCirclesWall, this.fireCollisionGroup, this._recicleFireCircle, null, this);
+                game.physics.arcade.collide(this.recicleFireCirclesWall, this.fireCollisionGroup, this._recicleFireCircle, null, this);
             }
 
 
@@ -269,7 +269,7 @@ export default function play(game) {
 
             lion.body.gravity.y = 700;
 
-            var isJumping = !lion.body.touching.down;
+            var isJumping = lion.body.touching.down;
 
             this.game.camera.x = lion.x - 100;
             if (isJumping) {
@@ -279,7 +279,7 @@ export default function play(game) {
                 clown.frameName = 'clownStand0000';
             }
 
-            if (cursors.up.isDown && !isJumping) {
+            if (game.input.keyboard.isDown(window.Phaser.Keyboard.W) && !isJumping) {
                 lion.body.velocity.y = -480;
             }
 
@@ -296,7 +296,7 @@ export default function play(game) {
 
                 lion.body.velocity.x = 200;
                 lion.animations.play('runLion', 10, true);
-            } else if (cursors.left.isDown) {
+            } else if (game.input.keyboard.isDown(window.Phaser.Keyboard.A)) {
                 clown.isRunning = true;
                 //this.background.tilePosition.x -= 4;
 
