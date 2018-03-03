@@ -26,18 +26,18 @@ export default function menuState() {
             this.startText = this.game.add.text(this.game.width / 2 - 180, this.game.height / 2 + 120, 'Press  ENTER  to\n start playing', textstyle);
 
 
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.game.physics.startSystem(window.Phaser.Physics.ARCADE);
 
             var clown = this.game.add.sprite(100, 600, 'clown');
             clown.scale.x = 4;
             clown.scale.y = 4;
-            this.game.physics.enable(clown, Phaser.Physics.ARCADE);
+            this.game.physics.enable(clown, window.Phaser.Physics.ARCADE);
 
             clown.body.velocity.x = 100;
 
 
 
-            clown.animations.add('run', Phaser.Animation.generateFrameNames('clown', 0, 2, '', 4), 10 /*fps */, true);
+            clown.animations.add('run', window.Phaser.Animation.generateFrameNames('clown', 0, 2, '', 4), 10 /*fps */, true);
             clown.animations.play('run', 8, true);
             //clown.animations.stope()
 
@@ -49,7 +49,7 @@ export default function menuState() {
             // TODO remover esto!
             //    this.startGame();
 
-            if (!this.enterPressed && this.game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+            if (!this.enterPressed && this.game.input.keyboard.isDown(window.Phaser.Keyboard.ENTER)) {
                 this.enterPressed = true;
 
                 this.blinkedTimes = -1;
@@ -57,7 +57,7 @@ export default function menuState() {
                     _this.blinkedTimes++;
                     if (_this.blinkedTimes > 10) {
                         clearInterval(_this.timerBlinker);
-                        GameCtrl.data = { textToRender: 'STAGE 01', nextState: 'Stage01' };
+                        // GameCtrl.data = { textToRender: 'STAGE 01', nextState: 'Stage01' };
                         _this.game.state.start('prestage');
 
                     }

@@ -15,8 +15,8 @@ export default function loadState() {
             this.load.setPreloadSprite(this.preloadBar);
 
             //	Here we load the rest of the assets our game needs.		
-            this.load.image('stage01', 'img/stage01.png');
-            this.load.image('stage02', 'img/stage02.png');
+            this.load.image('stage01', 'img/circus/stage01.png');
+            this.load.image('stage02', 'img/circus/stage02.png');
 
             //  This is how you load an atlas
             //this.load.atlas('playButton', 'assets/images/play_button.png', 'assets/images/play_button.json');
@@ -236,7 +236,7 @@ export default function loadState() {
             };
 
 
-            this.game.load.atlas('clown', 'img/CircusCharlieSheet1.gif', null, botData);
+            this.game.load.atlas('clown', 'img/circus/CircusCharlieSheet1.gif',null, botData);
 
 
 
